@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 
-const getdata=()=>{
-    return fetch(`https://fakestoreapi.com/products`).then((res)=>res.json())
+const getdata=(url)=>{
+    return fetch(url).then((res)=>res.json())
 }
 
+
+
 const Homepage=()=>{
-   
      const [data,setData]=useState([])
+     const [title,setTitle]=useState("")
+   
+   
 
      const fetchdata=async()=>{
         try {
-             const res=await getdata()
+             const res=await getdata(`https://fakestoreapi.com/products?q=${title}`)
              console.log("res",res)
              setData(res)
         } catch (error) {
@@ -21,8 +26,10 @@ const Homepage=()=>{
 
      useEffect(()=>{
           fetchdata()
-     },[])
+     },[title])
 
+   
+  
 
 
      const HomeBox={
@@ -51,16 +58,29 @@ const Homepage=()=>{
        
       }
       const imgg={width:"60%" ,height:"100%"}
-    
+
+      const linkStyle = {
+        textDecoration: 'none', 
+        color: 'black'
+      };
 
 
         return (
-       
-               <div style={HomeBox}>
+       <div>
+        <div>
+            <input type="text" 
+            placeholder="Search..." 
+            value={title} 
+            onChange={(e)=>setTitle(e.target.value)}/>
+        </div>
+
+        <div style={HomeBox}>
+        
                   {data?.map((el)=>(
                     <div  style={HomeBox2}
                      
                      key={el.id}>
+                        <Link to={`/${el.id}`} style={linkStyle}>
                         <div style={HomeBox3}>
                         <img src={el.image} style={imgg} alt="" />
                         </div>
@@ -68,14 +88,26 @@ const Homepage=()=>{
                      <div style={HomeBox3}>
                      <p>{el.title}</p>
                       <p>Rs.{el.price}</p>
-                        <button>Add To Cart</button>
+                      {/* <Link to={`/${el.id}`}>
+                      More Info
+                      </Link> */}
+                        <button >Add To Cart</button>
+                       
                      </div>
-                      
+                     </Link>
                        
                     </div>
-
                   ))}
+
+     
+
             </div>
+
+          
+ 
+
+       </div>
+               
        
            
         )
