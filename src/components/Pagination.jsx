@@ -1,22 +1,25 @@
 function Pagination({page,totalPages,setPage}) {
     const handleChange=(val)=>{
-      const updatepage=page+val;
-      setPage(updatepage)
+       setPage(page+val)
     }
   
     const prev = (
       <button
-     
+      className={`px-4 py-2 rounded ${
+        page === 1 ? 'bg-gray-300 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-700'
+      }`}
         disabled={page===1}
         onClick={()=>handleChange(-1)}
       >
         Prev
       </button>
     );
-    const currentPage = <button>{page}</button>;
+    const currentPage = <button className="px-4 py-2 rounded bg-white-500 text-black">{page}</button>;
     const next = (
       <button
-       
+      className={`px-4 py-2 rounded ${
+        page === totalPages ? 'bg-gray-300 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-700'
+      }`}
         disabled={page===totalPages} onClick={()=>handleChange(1)}
       >
         Next
@@ -29,8 +32,8 @@ function Pagination({page,totalPages,setPage}) {
         {currentPage}
         {next}
         </div>
-        <div>
-          Total Pages: <b>{totalPages}</b>
+        <div className="mt-2 text-lg">
+        Total Pages: <span className="font-bold">{totalPages}</span>
         </div>
       </div>
     );

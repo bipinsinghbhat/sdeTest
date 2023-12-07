@@ -35,16 +35,16 @@ const Cart = () => {
  
 
   return (
-    <div>
-      <h1>Cart</h1>
-      <div>
+    <div className="flex w-5/6 mx-auto justify-between" >
+     
+      <div className="w-3/5 h-48 border border-solid border-black">
         {/* Display cart items */}
         {cartData?.map((el) => (
-          <div key={el.id}>
+          <div key={el.id} className="w-1/4 h-48 border border-solid border-black">
             <img src={el.image} alt="" />
             <p>{el.title}</p>
             <p>Price: Rs{el.price}</p>
-            <div>
+            <div className="w-1/4 h-48 border border-solid border-black">
               <button onClick={() => handleDecrease(el.id)}  disabled={el.quantity===1}>-</button>
               <p>{el.quantity}</p>
               <button onClick={() => handleIncrease(el.id)}>+</button>
@@ -53,14 +53,16 @@ const Cart = () => {
           </div>
         ))}
 
-        <p>Total:{TotalAmount()}</p>
+      
  
 
         {/* Display total price */}
         {/* Add checkout button or other functionality */}
       </div>
      
-   
+         <div className="w-1/4 h-48 border border-solid border-black">
+         <p>Total:{TotalAmount()}</p>
+         </div>
 
 
     </div>

@@ -3,6 +3,7 @@ import Homepage from "../components/Homepage"
 import Cart from "../components/Cart"
 import Checkout from "../components/Checkout"
 import SingleUserPage from "../components/SingleUserPage"
+import Thankyou from "../components/Thankyou"
 
 const MainRoutes=()=>{
      return (
@@ -12,6 +13,7 @@ const MainRoutes=()=>{
           <Route path="/Cart"  element={<Cart/>}   />
           <Route path="/:product_id" element={<SingleUserPage />} />
           <Route path="/Checkout"  element={<Checkout/>}   />
+          <Route path="/Thankyou"  element={<Thankyou/>}   />
      </Routes>
      )
 }

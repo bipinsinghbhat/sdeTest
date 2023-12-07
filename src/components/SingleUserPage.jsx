@@ -41,13 +41,8 @@ const SingleUserPage=()=>{
  }
 
 
-  const singleBox={
-    display:"flex",
-    width:"1260px",
-    margin: "auto",
-    height:"600px",
-    border:"2px solid red"
-  }
+  
+
   const singleBox1={
     width:"40%",
     height:"100%",
@@ -65,8 +60,8 @@ const SingleUserPage=()=>{
  
 return (
     <div>
-        <div key={data?.id} style={singleBox}>
-                        <div style={singleBox1}>
+        <div key={data?.id} className="flex justify-center w-5/6 m-auto h-5/6 ">
+                        <div className="w-2/5 h-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
                         <img src={data.image} style={singleBox11} alt="" />
                         </div>
                        
@@ -74,10 +69,11 @@ return (
                      <h2>{data.title}</h2>
                       <h3>Rs.{data.price}</h3>
                       <hr />
-                      <p style={{ textAlign: 'justify' }}>{data.description}</p>
+                      <p className="text-justify">{data.description}</p>
+
                     <hr />
                       <h3>{data.category}</h3>
-                        <button onClick={()=>handleAdd(data)}>Add To Cart</button>
+                        <button onClick={()=>handleAdd(data)} className="px-4 py-2  text-white bg-blue-500 hover:bg-blue-700 rounded">Add To Cart</button>
                      </div>       
         </div>       
     </div>
