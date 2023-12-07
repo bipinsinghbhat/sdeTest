@@ -63,12 +63,8 @@ const SingleUserPage=()=>{
    padding:"40px"
   }
  
-
-
 return (
     <div>
-       
-       
         <div key={data?.id} style={singleBox}>
                         <div style={singleBox1}>
                         <img src={data.image} style={singleBox11} alt="" />
@@ -82,12 +78,8 @@ return (
                     <hr />
                       <h3>{data.category}</h3>
                         <button onClick={()=>handleAdd(data)}>Add To Cart</button>
-                     </div>
-                      
-                       
-        </div>
-                 
-            
+                     </div>       
+        </div>       
     </div>
 )
 }

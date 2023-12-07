@@ -1,4 +1,4 @@
-import { Add_To_Cart } from "./actionTypes"
+import { Add_To_Cart, Decrease_Quantity, Increase_Quantity, Remove_From_Cart } from "./actionTypes"
 
 const initialState={
     cart:[]
@@ -7,16 +7,22 @@ const initialState={
 export const cartReducer=(state=initialState,{type,payload})=>{
   switch(type){
  case Add_To_Cart:
-    const alreadyexistitem = state.cart.find(item => item.id === payload.id);   
+    const alreadyexistitem = state.cart.find(el => el.id === payload.id);   
  if(alreadyexistitem){
     alert(`Already in the Cart`)
     return state
  }
    else{
     alert(`Added to the cart`)
-    return {...state,cart:[...state.cart,payload]}
+    const newpayload={...payload,quantity:1}
+    return {...state,cart:[...state.cart,newpayload]}
    }
    
+
+    case Increase_Quantity:return {...state,cart:state.cart.map((el)=>el.id===payload.id ? {...el,quantity:el.quantity+1}:el)}
+    case Decrease_Quantity:return {...state,cart:state.cart.map((el)=>el.id===payload.id ? {...el,quantity:el.quantity-1}:el)}
+
+    case Remove_From_Cart:return {...state,cart:state.cart.filter((el)=>el.id!==payload.id)}
 
 
     default: return state;

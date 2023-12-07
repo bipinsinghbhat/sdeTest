@@ -5,14 +5,14 @@ export const addtocart=(product)=>{
     return {type:Add_To_Cart,payload:product}
 }
 
-export const removefromcart=(Id)=>{
-    return {type:Remove_From_Cart,payload:Id}
+export const removefromcart=(id)=>{
+    return {type:Remove_From_Cart,payload:{id}}
 }
 
-export const increaseqty=(Id)=>{
-    return {type:Increase_Quantity,payload:Id}
+export const increaseqty=(id)=>{
+    return {type:Increase_Quantity,payload:{id}}
 }
 
-export const decreaseqty=(Id)=>{
-    return {type:Decrease_Quantity,payload:Id}
+export const decreaseqty=(id)=>{
+    return {type:Decrease_Quantity,payload:{id}}
 }

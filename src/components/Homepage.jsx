@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import Pagination from "./Pagination"
 
 
 const getdata=(url)=>{
@@ -10,26 +11,52 @@ const getdata=(url)=>{
 
 const Homepage=()=>{
      const [data,setData]=useState([])
-     const [title,setTitle]=useState("")
+     const [page,setPage]=useState(1)
+     const [totalPages, setTotalPages] = useState(1);
+     const limit=8
    
-   
+
+
+
 
      const fetchdata=async()=>{
         try {
-             const res=await getdata(`https://fakestoreapi.com/products?q=${title}`)
+             const res=await getdata(`https://fakestoreapi.com/products?page=${page}&limit=${limit}`)
              console.log("res",res)
              setData(res)
         } catch (error) {
-            console.log("error")
+            console.log("error",error)
         }
      }
 
      useEffect(()=>{
           fetchdata()
-     },[title])
+     },[page])
+
+
+
+     const fetchTotalCount = async () => {
+      try {
+        const totaldata = await getdata("https://fakestoreapi.com/products");
+        const totalCount = totaldata.length;
+        console.log("totalCount",totalCount)
+        setTotalPages(Math.ceil(totalCount / limit));
+      } catch (error) {
+        console.log("Error fetching total count:", error);
+      }
+    };
+  
+    useEffect(() => {
+      fetchTotalCount();
+    }, []);
+
+
+
+
+
+
 
    
-  
 
 
      const HomeBox={
@@ -67,12 +94,7 @@ const Homepage=()=>{
 
         return (
        <div>
-        <div>
-            <input type="text" 
-            placeholder="Search..." 
-            value={title} 
-            onChange={(e)=>setTitle(e.target.value)}/>
-        </div>
+        
 
         <div style={HomeBox}>
         
@@ -103,7 +125,7 @@ const Homepage=()=>{
 
             </div>
 
-          
+          <Pagination totalPages={totalPages} page={page} setPage={setPage}/>
  
 
        </div>
