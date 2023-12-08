@@ -10,13 +10,13 @@ const Navbar=()=>{
         
             
 
-              <div className="bg-gray-800 text-white py-4 px-8 flex justify-between w-full mx-auto">
+              <div className="bg-gray-800 text-white py-4 px-8 flex justify-between w-full mx-auto  md:flex-col  lg:flex-row sm:flex-col xs:flex-col">
 
              <div className="pl-24">
                 logo
              </div>
 
-             <div className=" w-1/4 flex justify-between pr-24">
+             <div className=" w-1/2 flex justify-between pr-24 md:flex-col  lg:flex-row  sm:flex-col border border-4 border-red   xs:flex-col border border-4 border-red ">
              <Link to={"/"}  className="hover:underline ">Home</Link>
             <Link to={"/Cart"} className="hover:underline ">Cart-{cartData.length}</Link>
             <Link to={"/Checkout"} className="hover:underline ">Checkout</Link>

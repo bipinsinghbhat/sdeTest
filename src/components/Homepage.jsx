@@ -64,7 +64,7 @@ console.log("q",qu)
    
 
 
-      const imgg={width:"60%" ,height:"100%"}
+     
 
       const linkStyle = {
         textDecoration: 'none', 
@@ -73,17 +73,26 @@ console.log("q",qu)
 
 
         return (
-        <div>
+        <div className="bg-red-50 min-h-[90vh] w-full">
 
                      <div>
-         <form onSubmit={handleSearch}>
-             <div>
-               <input type="text" placeholder="search"  value={qu} onChange={(e)=>setqu(e.target.value)} className="p-1  border border-blue border-2  " />
+                     <form onSubmit={handleSearch} className="flex items-center justify-center pt-4">
+                    <div className="relative">
+                     <input
+                      type="text"
+                       placeholder="Search"
+                       value={qu}
+                       onChange={(e) => setqu(e.target.value)}
+                       className="py-2 pl-4 pr-10 rounded-full border border-black-500 focus:outline-none focus:border-black-700 focus:ring-1 focus:ring-black-500"
+                />
                <button type="submit" className="hidden">Search</button>
-             </div>
-             </form>
-
-        <div className= "grid grid-cols-4 gap-10 w-5/6 mx-auto py-4">
+                   </div>
+                     </form>
+                     </div>
+           
+            
+            
+                     <div className="w-full grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 gap-10 lg:w-5/6 lg:mx-auto xs:w-5/6 xs:mx-auto py-4">
              
             
           {search.length > 0 ? search?.map((el)=>(
@@ -93,15 +102,18 @@ console.log("q",qu)
                      key={el.id}>
                         <Link to={`/${el.id}`} style={linkStyle}>
                         <div  className="flex justify-center w-72 h-48">
-                        <img src={el.image} style={imgg} alt="" />
+                        <img src={el.image} className="w-3/5 h-full" alt="" />
                         </div>
                        
-                        <div className = "w-72 h-48 py-4">
-                     <h1 className="pl-4 pr-4">{el.title.substring(0,60)}</h1>
-                      <p className="pb-2">Rs.{el.price}</p>
+                        <div className = "w-72 h-24 py-4">
+                        <h1 className="pl-4 pr-4">{el.title.substring(0,60)}</h1>
+                     <p className="pb-2 font-semibold">Rs.{el.price}</p>
                       {/* <Link to={`/${el.id}`}>
                       More Info
                       </Link> */}
+                           </div>
+                           <div className = "w-72 h-24 py-4">
+
                        <button className="px-4 py-2  text-white bg-blue-500 hover:bg-blue-700 rounded">Add To Cart</button>
                        
                      </div>
@@ -115,19 +127,22 @@ console.log("q",qu)
                      key={el.id}>
                         <Link to={`/${el.id}`} style={linkStyle}>
                         <div  className="flex justify-center w-72 h-48 ">
-                        <img src={el.image} style={imgg} alt="" />
+                        <img src={el.image} className="w-3/5 h-full" alt="" />
                         </div>
                        
-                     <div className = "w-72 h-48 py-4"
->
+                     <div className = "w-72 h-24 py-4">
                      <h1 className="pl-4 pr-4">{el.title.substring(0,60)}</h1>
-                      <p className="pb-2" >Rs.{el.price}</p>
+                     <p className="pb-2 font-semibold">Rs.{el.price}</p>
+
+
                       {/* <Link to={`/${el.id}`}>
                       More Info
                       </Link> */}
-                     
+                      </div>
+                        
+                         <div className = "w-72 h-24 py-4"> 
                        <button className="px-4 py-2  text-white bg-blue-500 hover:bg-blue-700 rounded">Add To Cart</button>
-
+                     
                        
                      </div>
                      </Link>
@@ -143,7 +158,7 @@ console.log("q",qu)
         
  
 
-                     </div>
+                    
 
                    <div>
                    <Pagination    page={page} totalPages={totalPages} setPage={setPage}    />

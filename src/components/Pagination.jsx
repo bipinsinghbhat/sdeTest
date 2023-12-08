@@ -26,16 +26,17 @@ function Pagination({page,totalPages,setPage}) {
       </button>
     );
     return (
-    <div>
-        <div>
+      <div className="flex-col border border-2 border-red h-full">
+      <div>
         {prev}
         {currentPage}
         {next}
-        </div>
-        <div className="mt-2 text-lg">
-        Total Pages: <span className="font-bold">{totalPages}</span>
-        </div>
       </div>
+      <div className="mt-2 text-lg">
+        Total Pages: <span className="font-bold">{totalPages}</span>
+      </div>
+    </div>
+    
     );
   }
   

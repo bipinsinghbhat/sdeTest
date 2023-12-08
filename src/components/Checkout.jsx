@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import bipin from "../images/depositphotos_610736028-stock-photo-fantasy-background-magic-forest-road.jpg"
 
 const initialstate={
   name: "",
@@ -23,22 +24,20 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform any necessary form validation here before submission
     console.log("FormData", formData);
     alert("Order Sucessfull")
-    // Redirect to Thank You page
-     navigate("/Thankyou")
+    navigate("/Thankyou")
     
   };
 
   return (
-    
-       <div className="flex w-5/6 mx-auto h-screen">
-                <div className="w-1/2 h-4/5 border border-red-500 bg-red-200">
-
+    <div className='w-full min-h-[90vh]  border border-1 border-red bg-red-50' >
+       <div className="flex w-5/6  mx-auto min-h-[80vh] border-1 border-red-100  lg:flex-row xs:flex-col">
+                <div className="w-full sm:w-full xs:w-full min-h-[40vh] md:full   lg:w-1/2   ">
+                <img src={bipin} className='w-full lg:h-full xs:h-full' alt="" />
                 </div>
 
-                <div className="w-1/2 h-4/5 border border-red-500 p-6 rounded-lg shadow-lg">
+                <div className="w-full sm:w-3/4  xs:3/4 md:3/4   lg:w-1/2 border border-red-500 p-6 rounded-lg shadow-lg">
   <form onSubmit={handleSubmit} className="space-y-4">
     <div className="flex items-center " >
       <label htmlFor="name" className="text-gray-800 w-28">
@@ -51,7 +50,7 @@ const Checkout = () => {
         value={formData.name}
         onChange={handleChange}
         required
-        className="border border-gray-400 rounded-md p-2 flex-grow focus:outline-none focus:border-b-2 focus:border-blue-500 "
+        className="w-full sm:w-48 border border-gray-400 rounded-md p-2 flex-grow focus:outline-none focus:border-b-2 focus:border-blue-500 "
       />
     </div>
     <div className="flex items-center">
@@ -65,7 +64,7 @@ const Checkout = () => {
         value={formData.address}
         onChange={handleChange}
         required
-        className="border border-gray-400 rounded-md p-2 flex-grow focus:outline-none focus:border-b-2 focus:border-blue-500"
+        className="w-full sm:w-48 border border-gray-400 rounded-md p-2 flex-grow focus:outline-none focus:border-b-2 focus:border-blue-500"
       />
     </div>
     <div className="flex items-center">
@@ -79,7 +78,7 @@ const Checkout = () => {
         value={formData.phoneNumber}
         onChange={handleChange}
         required
-        className="border border-gray-400 rounded-md p-2 flex-grow focus:outline-none focus:border-b-2 focus:border-blue-500"
+        className="w-full sm:w-48 border border-gray-400 rounded-md p-2 flex-grow focus:outline-none focus:border-b-2 focus:border-blue-500"
       />
     </div>
     <div className="flex items-center">
@@ -91,7 +90,7 @@ const Checkout = () => {
         name="paymentMethod"
         value={formData.paymentMethod}
         onChange={handleChange}
-        className="border border-gray-400 rounded-md p-2 flex-grow focus:outline-none focus:border-b-2 focus:border-blue-500"
+        className="w-full sm:w-48 border border-gray-400 rounded-md p-2 flex-grow focus:outline-none focus:border-b-2 focus:border-blue-500"
       >
         <option value="Credit Card">Credit Card</option>
         <option value="PayPal">PayPal</option>
@@ -103,10 +102,10 @@ const Checkout = () => {
       className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700"
       
     >
-      Submit
+       Place Order
     </button>
   </form>
-</div>
+                 </div>
 
 
 
@@ -115,7 +114,7 @@ const Checkout = () => {
        </div>
 
 
-    
+       </div> 
   );
 };
 

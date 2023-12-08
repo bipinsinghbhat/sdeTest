@@ -43,40 +43,37 @@ const SingleUserPage=()=>{
 
   
 
-  const singleBox1={
-    width:"40%",
-    height:"100%",
-    border:"2px solid blue"
-  }
-  const singleBox11={
-    width:"100%",
-    height:"100%",
-   
-  }
-  const singleBox2={
-    width:"60%",
-   padding:"40px"
-  }
+
+
+ 
  
 return (
-    <div>
-        <div key={data?.id} className="flex justify-center w-5/6 m-auto h-5/6 ">
-                        <div className="w-2/5 h-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-                        <img src={data.image} style={singleBox11} alt="" />
-                        </div>
-                       
-                     <div style={singleBox2}>
-                     <h2>{data.title}</h2>
-                      <h3>Rs.{data.price}</h3>
-                      <hr />
-                      <p className="text-justify">{data.description}</p>
-
-                    <hr />
-                      <h3>{data.category}</h3>
-                        <button onClick={()=>handleAdd(data)} className="px-4 py-2  text-white bg-blue-500 hover:bg-blue-700 rounded">Add To Cart</button>
-                     </div>       
-        </div>       
+<div className="bg-red-50 min-h-[90vh] pt-4">
+  <div key={data?.id} className="flex justify-center w-5/6 m-auto  pt-4 sm:flex-col md:flex-col lg:flex-row xs:flex-col">
+    <div className="w-2/5 lg:h-550 xs:h-200 shadow-lg transition duration-300 ease-in-out transform hover:scale-105 border-1 border-black-700 overflow-hidden">
+      <img
+        src={data.image}
+        className="object-contain w-full h-full lg:h-550 xs:h-200"
+        style={{ maxHeight: '550px' }} // Set max-height for lg screens
+        alt=""
+      />
     </div>
+    <div className="w-3/5 p-8">
+      <h2 className="text-2xl font-bold">{data.title}</h2>
+      <hr className="my-4" />
+      <h3 className="text-lg font-semibold">Rs. {data.price}</h3>
+      <hr className="my-4" />
+      <p className="text-justify">{data.description}</p>
+      <hr className="my-4" />
+      <div>
+        <h3 className="text-lg font-semibold">Category: {data.category}</h3>
+      </div>
+      <button onClick={()=>handleAdd(data)} className="px-4 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded mt-4">Add To Cart</button>
+    </div>
+  </div>
+</div>
+
+
 )
 }
 export default SingleUserPage
