@@ -80,7 +80,7 @@ console.log("q",qu)
                     <div className="relative">
                      <input
                       type="text"
-                       placeholder="Search"
+                       placeholder="Search..."
                        value={qu}
                        onChange={(e) => setqu(e.target.value)}
                        className="py-2 pl-4 pr-10 rounded-full border border-black-500 focus:outline-none focus:border-black-700 focus:ring-1 focus:ring-black-500"

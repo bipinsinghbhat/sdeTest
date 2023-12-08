@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {  decreaseqty, increaseqty, removefromcart } from "../redux/action";
 import { useNavigate } from "react-router-dom";
+import cartimg from "../images/empty-cart-2130356-1800917.webp"
 
 const Cart = () => {
   const navigate=useNavigate()
@@ -60,7 +61,7 @@ const Cart = () => {
           <div className="pl-8 w-3/5 " >
                    
           <div className="pt-4 ">
-               <p className="lg:block ">{el.title.substring(0,50)}</p>
+               <p className="lg:block ">{el.title.substring(0,30)}</p>
                <p >Price: Rs{el.price}</p>
            </div>
 
@@ -81,7 +82,7 @@ const Cart = () => {
 
 
           </div>
-        )) :    <div className="bg-red-50 w-full min-h-[90vh] p-8" ><p>The cart is Empty , Add some items to buy</p></div> }
+        )) :    <div className="bg-red-50 w-full min-h-[90vh] p-8" ><img src={cartimg} className="lg:w-full   sx:w-full" alt="" /><p className="pt-4">The cart is Empty , Add some items to buy</p></div> }
 
       
  

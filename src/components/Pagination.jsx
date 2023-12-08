@@ -26,7 +26,7 @@ function Pagination({page,totalPages,setPage}) {
       </button>
     );
     return (
-      <div className="flex-col border border-2 border-red h-full">
+      <div className="flex-col  h-full">
       <div>
         {prev}
         {currentPage}
