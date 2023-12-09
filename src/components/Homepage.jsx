@@ -20,9 +20,9 @@ const Homepage=()=>{
      const [search,setsearch]=useState([])
    
 
+            
 
-
-
+      
      const fetchdata=async()=>{
        
        const startindex=(page-1)*limit

@@ -50,15 +50,15 @@ const SingleUserPage=()=>{
 return (
 <div className="bg-red-50 min-h-[90vh] pt-4">
   <div key={data?.id} className="flex justify-center w-5/6 m-auto  pt-4 sm:flex-col md:flex-col lg:flex-row xs:flex-col">
-    <div className="w-2/5 lg:h-550 xs:h-200 shadow-lg transition duration-300 ease-in-out transform hover:scale-105 border-1 border-black-700 overflow-hidden">
+    <div className="lg:w-2/5 lg:h-550 xs:h-200 xs:w- shadow-lg transition duration-300 ease-in-out transform hover:scale-105 border-1 border-black-700 overflow-hidden">
       <img
         src={data.image}
-        className="object-contain w-full h-full lg:h-550 xs:h-200"
+        className="object-contain w-full h-full lg:h-550 xs:h-200 border border-8 border-red"
         style={{ maxHeight: '550px' }} // 
         alt=""
       />
     </div>
-    <div className="w-3/5 p-8">
+    <div className="lg:w-3/5 p-8 xs:w-full">
       <h2 className="text-2xl font-bold">{data.title}</h2>
       <hr className="my-4" />
       <h3 className="text-lg font-semibold">Rs. {data.price}</h3>
