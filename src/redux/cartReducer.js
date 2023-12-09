@@ -28,10 +28,8 @@ export const cartReducer=(state=initialState,{type,payload})=>{
     case Clear_Cart: return { ...state, cart: []};
 
 
-    default: return state;
+    default: return state
 
 
   }
-
-
 }
