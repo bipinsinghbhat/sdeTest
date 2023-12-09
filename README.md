@@ -28,7 +28,16 @@ Tech Stack Used - React.js Redux and Tailwind
 ![Screenshot 2023-12-09 230818](https://github.com/bipinsinghbhat/sdeTest/assets/115497347/988d3f8d-0159-4186-953e-a4f11df7288d)
 
 
-![Screenshot (10)](https://github.com/bipinsinghbhat/sdeTest/assets/115497347/98b027bb-fd91-42f2-a960-e8b017fd8579)
+
+
+
+
+
+
+
+
+
+
 
 
 
