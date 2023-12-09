@@ -10,15 +10,11 @@ Before getting started, ensure you have the following installed:
 
 1. Clone the repository:
 
-
+```bash
+git clone https://github.com/yourusername/your-repo.git 
 
 2. Install react app 
    npx create-react-app .
    npm start 
 
-3. Tech stack Used- React Redux Tailwindcss  
-
-
-
-
-
+3. Tech stack Used- React Redux Tailwind css 
