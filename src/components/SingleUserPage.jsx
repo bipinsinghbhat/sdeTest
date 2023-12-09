@@ -54,7 +54,7 @@ return (
       <img
         src={data.image}
         className="object-contain w-full h-full lg:h-550 xs:h-200"
-        style={{ maxHeight: '550px' }} // Set max-height for lg screens
+        style={{ maxHeight: '550px' }} // 
         alt=""
       />
     </div>
