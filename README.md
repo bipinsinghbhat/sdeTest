@@ -1,4 +1,6 @@
 # E-commerce Website 
+# Open the website from the About section link for latest update
+
 Task for SDE1 role
 
 Steps to run the Application
