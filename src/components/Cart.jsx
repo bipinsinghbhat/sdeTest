@@ -31,7 +31,7 @@ const Cart = () => {
 
      const totalsum = Math.round(total * 100) / 100;
       console.log("Total", totalsum); 
-      return totalsum;
+      return totalsum
         
     }
 
