@@ -19,5 +19,4 @@ git clone https://github.com/yourusername/your-repo.git
 
 3. Tech stack Used- React Redux Tailwindcss  
 
-4. HomePage
-![image](https://1drv.ms/i/s!AjH0NNxcEQqvg8wylJROLA_2y7iymw?e=avZDQ9)
+
