@@ -1,5 +1,7 @@
-# sdeTest
+# E-commerce Website 
 Task for SDE1 role
+
+Tech Stack Used - React.js Redux and Tailwind
 
 #output
 
