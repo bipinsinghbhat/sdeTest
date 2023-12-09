@@ -20,4 +20,4 @@ git clone https://github.com/yourusername/your-repo.git
 3. Tech stack Used- React Redux Tailwindcss  
 
 4. HomePage
-![Screenshot]("C:\Users\Bipin Singh Bhat\OneDrive\Pictures\Screenshots\Screenshot (1).png")
+![image](https://1drv.ms/i/s!AjH0NNxcEQqvg8wylJROLA_2y7iymw?e=avZDQ9)
