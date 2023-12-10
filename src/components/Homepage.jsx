@@ -13,13 +13,15 @@ const getdata=(url)=>{
 
 const Homepage=()=>{
      const [data,setData]=useState([])
+      const [searchdata,setsearchdata]=useState([])
      const [page,setPage]=useState(1)
      const [totalPages, setTotalPages] = useState(1);
      const limit=8
+
      const [qu,setqu]=useState("")
      const [search,setsearch]=useState([])
    
-
+     
             
 
       
@@ -43,6 +45,20 @@ const Homepage=()=>{
         }
      }
 
+     const searchingdata=async()=>{
+       try {
+              const response=await getdata(`https://fakestoreapi.com/products`)
+               console.log("RESSS",response)
+              setsearchdata(response)
+       } catch (error) {
+             console.log("error",error)
+       }
+     }
+      useEffect(()=>{
+          searchingdata()
+      },[])
+
+
      useEffect(()=>{
           fetchdata()
      },[page])
@@ -54,7 +70,7 @@ const Homepage=()=>{
      const handleSearch=(e)=>{
       e.preventDefault();
         const searching=qu.toLowerCase()
-        const result=data?.filter((el)=>el.title.toLowerCase().includes(searching))
+        const result=searchdata?.filter((el)=>el.title.toLowerCase().includes(searching))
          setsearch(result)
      }
 
