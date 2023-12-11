@@ -82,10 +82,7 @@ console.log("q",qu)
 
      
 
-      const linkStyle = {
-        textDecoration: 'none', 
-        color: 'black'
-      };
+    
 
 
         return (
@@ -99,7 +96,7 @@ console.log("q",qu)
                        placeholder="Search..."
                        value={qu}
                        onChange={(e) => setqu(e.target.value)}
-                       className="py-2 pl-4 pr-10 rounded-full border border-black-500 focus:outline-none focus:border-black-700 focus:ring-1 focus:ring-black-500"
+                       className="py-2 pl-4 pr-10 rounded-full border border-black-500 focus:outline-none focus:border-1 border-black-700 focus:ring-1 focus:ring-black-500"
                 />
                <button type="submit" className="hidden">Search</button>
                    </div>
@@ -108,20 +105,20 @@ console.log("q",qu)
            
             
             
-                     <div className="w-full grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 gap-10 lg:w-5/6 lg:mx-auto xs:w-5/6 xs:mx-auto py-4">
+             <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 gap-10 lg:w-5/6 lg:mx-auto xs:w-5/6 xs:mx-auto py-4">
              
             
           {search.length > 0 ? search?.map((el)=>(
-                  <div className="w-72 h-96 pt-4 shadow-lg transition duration-300 ease-in-out transform hover:scale-105"   
+                  <div className="h-96 pt-4 shadow-lg transition duration-300 ease-in-out transform hover:scale-105"   
 
                      
                      key={el.id}>
-                        <Link to={`/${el.id}`} style={linkStyle}>
-                        <div  className="flex justify-center w-72 h-48">
+                        <Link to={`/${el.id}`} >
+                        <div  className="flex justify-center  h-48">
                         <img src={el.image} className="w-3/5 h-full" alt="" />
                         </div>
                        
-                        <div className = "w-72 h-24 py-4">
+                        <div className = " h-24 py-4">
                         <h1 className="pl-4 pr-4">{el.title.substring(0,60)}</h1>
                      <p className="pb-2 font-semibold">Rs.{el.price}</p>
                       {/* <Link to={`/${el.id}`}>
@@ -130,7 +127,7 @@ console.log("q",qu)
                            </div>
                            <div className = "w-72 h-24 py-4">
 
-                       <button className="px-4 py-2  text-white bg-blue-500 hover:bg-blue-700 rounded">Add To Cart</button>
+                       <button className="px-4 py-2  text-white bg-blue-500 hover:bg-blue-700 rounded-lg">Add To Cart</button>
                        
                      </div>
                      </Link>
@@ -138,26 +135,26 @@ console.log("q",qu)
                     </div>
                   )) : 
                   data?.map((el)=>(
-                    <div className="w-72 h-96 pt-4 shadow-lg transition duration-300 ease-in-out transform hover:scale-105"             
+                    <div className=" h-96 pt-4 shadow-lg transition duration-300 ease-in-out transform hover:scale-105"             
                      
                      key={el.id}>
-                        <Link to={`/${el.id}`} style={linkStyle}>
-                        <div  className="flex justify-center w-72 h-48 ">
+                        <Link to={`/${el.id}`}>
+                        <div  className="flex justify-center  h-48 ">
                         <img src={el.image} className="w-3/5 h-full" alt="" />
                         </div>
                        
-                     <div className = "w-72 h-24 py-4">
+                     <div className = "h-24 py-4">
                      <h1 className="pl-4 pr-4">{el.title.substring(0,60)}</h1>
                      <p className="pb-2 font-semibold">Rs.{el.price}</p>
-
+                     </div>
 
                       {/* <Link to={`/${el.id}`}>
                       More Info
                       </Link> */}
-                      </div>
+                      
                         
-                         <div className = "w-72 h-24 py-4"> 
-                       <button className="px-4 py-2  text-white bg-blue-500 hover:bg-blue-700 rounded">Add To Cart</button>
+                         <div className = " h-24 py-4 "> 
+                       <button className="px-4 py-2  text-white bg-blue-500 hover:bg-blue-700 rounded-lg">Add To Cart</button>
                      
                        
                      </div>

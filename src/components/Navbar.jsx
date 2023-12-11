@@ -12,7 +12,7 @@ const Navbar=()=>{
         
             
 
-              <div className="bg-gray-800 text-white py-4 px-8 flex justify-between w-full mx-auto  md:flex-col  lg:flex-row sm:flex-col xs:flex-col">
+     <div className="bg-gray-800 text-white py-4 px-8 flex justify-between w-full mx-auto  md:flex-col  lg:flex-row sm:flex-col xs:flex-col">
 
 <div className="ml-24">
   <Link to={"/"} className="hover:underline"> <img src={logo} alt="" className="w-24 h-8" /> </Link>

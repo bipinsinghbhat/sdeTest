@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import bipin from "../images/depositphotos_610736028-stock-photo-fantasy-background-magic-forest-road.jpg"
 import { useDispatch } from 'react-redux';
-import { clearCart, clearcart } from '../redux/action';
+import {  clearcart } from '../redux/action';
 
 const initialstate={
   name: "",
