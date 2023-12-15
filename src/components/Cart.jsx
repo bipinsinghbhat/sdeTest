@@ -69,7 +69,7 @@ const Cart = () => {
                 <div className="flex justify-between items-center p-4">
                   <img src={el.image} className="h-24 md:h-32" alt="" />
                   <div className="flex flex-col items-start justify-center w-2/3 md:w-3/4 ml-4">
-                    <p>{el.title}</p>
+                 <p>{el.title}</p>
                     <p>Price: Rs {el.price}</p>
                     <div className="flex items-center mt-2">
                       <button
