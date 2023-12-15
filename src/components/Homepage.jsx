@@ -155,9 +155,8 @@ console.log("q",qu)
                         
                          <div className = " h-24 py-4 "> 
                        <button className="px-4 py-2  text-white bg-blue-500 hover:bg-blue-700 rounded-lg">Add To Cart</button>
-                     
-                       
-                     </div>
+                      </div>
+                      
                      </Link>
                        
                     </div>
@@ -174,7 +173,7 @@ console.log("q",qu)
                     
 
                    <div>
-                   <Pagination    page={page} totalPages={totalPages} setPage={setPage}    />
+                   <Pagination page={page} totalPages={totalPages} setPage={setPage}/>
                    </div>
           
           

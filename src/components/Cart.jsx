@@ -1,16 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
-import {  decreaseqty, increaseqty, removefromcart } from "../redux/action";
+import { decreaseqty, increaseqty, removefromcart } from "../redux/action";
 import { useNavigate } from "react-router-dom";
-import cartimg from "../images/empty-cart-2130356-1800917.webp"
+import cartimg from "../images/empty-cart-2130356-1800917.webp";
+import { useEffect, useState } from "react";
 
 const Cart = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const cartData = useSelector((store) => store.cartReducer.cart);
-  console.log("cd",cartData)
   const dispatch = useDispatch();
+  const [deliveryMessage, setDeliveryMessage] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
+ 
 
   const handleIncrease = (id) => {
     dispatch(increaseqty(id));
+    
   };
 
   const handleDecrease = (id) => {
@@ -21,94 +25,106 @@ const Cart = () => {
     dispatch(removefromcart(id));
   };
 
-  const TotalAmount=()=>{
-     if(cartData.length===0){
-      return 0;
-     }
-      const total=cartData.reduce((acc,el)=>{
-        return acc+el.price*el.quantity
-      },0)
+  const TotalAmount = () => {
+    const totalPrice = cartData.reduce((acc, el) => {
+      return acc + el.price * el.quantity;
+    }, 0);
 
-     const totalsum = Math.round(total * 100) / 100;
-      console.log("Total", totalsum); 
-      return totalsum
-        
+    return Math.round(totalPrice * 100) / 100;
+  };
+
+
+
+
+
+  
+  
+  
+
+  const handleNavigate = () => {
+    navigate("/Checkout");
+  };
+
+  useEffect(() => {
+    const total = TotalAmount();
+    if (total < 1000) {
+      setTotalPrice(total + 100);
+      setDeliveryMessage(`Delivery Charges: Rs 100 for shopping less than 1000`);
+    } else {
+      setTotalPrice(total);
+      setDeliveryMessage("Delivery Charges: Free for orders above 1000");
     }
+  }, [cartData]);
 
- const handlenavigate=()=>{
-     navigate("/Checkout")
- }
- 
+   
 
   return (
- <div className="w-full min-h-[90vh]  bg-red-50">
-
-
-    <div className="flex lg:w-5/6 mx-auto justify-between xs:flex-col lg:flex-row" >
-     
-      <div className="lg:w-3/5">
-        {/* Display cart items */}
-        {cartData.length>0  ?  cartData?.map((el) => (
-        <div key={el.id} className="w-full xs:h-60 lg:h-48 border border-1 border-green flex mt-4 bg-red-50 lg:flex-row shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-           
-           <div className=" lg:w-1/4 xs:w-3/4 border border-2 border-red">
-            <img src={el.image}  className="h-44 pl-4 pt-2 xs:w-4/5 lg:w-4/5" alt="" />
-            </div>
-
-
-          <div className="w-3/5 " >
-                   
-          <div className="lg:pt-4  xs:pt-1  ">
-               <p >{el.title.substring(0,30)}</p>
-               <p >Price: Rs{el.price}</p>
-           </div>
-
-         <div className="w-3/4 lg:mt-4 xs:mt-4 flex items-center justify-between  xs:flex-col " >
-            <div className="flex">
-            <button
-             onClick={() => handleDecrease(el.id)}
-             className={`${el.quantity === 1 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-700'} text-white font-bold py-2 px-4 rounded-lg`}
-             disabled={el.quantity === 1}
-             >
-              -
-             </button>
-             <p className="px-2 py-2 font-semibold bg-white-500 text-black">{el.quantity}</p>
-             <button onClick={() => handleIncrease(el.id)} className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg"> +</button>
+    <div className="min-h-screen bg-red-50 px-4 md:px-8">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-stretch">
+       
+        <div className="w-full md:w-2/3  ">
+          {cartData.length > 0 ? (
+            cartData?.map((el) => (
+              <div key={el.id} className="w-full border border-green mt-4 bg-white rounded-md shadow-md">
+                <div className="flex justify-between items-center p-4">
+                  <img src={el.image} className="h-24 md:h-32" alt="" />
+                  <div className="flex flex-col items-start justify-center w-2/3 md:w-3/4 ml-4">
+                    <p>{el.title}</p>
+                    <p>Price: Rs {el.price}</p>
+                    <div className="flex items-center mt-2">
+                      <button
+                        onClick={() => handleDecrease(el.id)}
+                        className={`${
+                          el.quantity === 1 ? "cursor-not-allowed opacity-50" : "hover:bg-blue-700"
+                        } bg-blue-500 text-white font-bold py-1 px-2 rounded-md`}
+                        disabled={el.quantity === 1}
+                      >
+                        -
+                      </button>
+                      <p className="px-2 py-1 font-semibold">{el.quantity}</p>
+                      <button
+                        onClick={() => handleIncrease(el.id)}
+                        className="hover:bg-blue-800 bg-blue-500 text-white font-bold py-1 px-2 rounded-md"
+                      >
+                        +
+                      </button>
+                      <button
+                        onClick={() => handleRemove(el.id)}
+                        className="ml-2 bg-red-500 hover:bg-red-800 text-white font-bold py-1 px-2 rounded-md"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-             <div className="xs:pt-2">
-             <button onClick={() => handleRemove(el.id)} className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg"> Remove </button>
-             </div>
+            ))
+          ) : (
+            <div className="w-full bg-white p-8 rounded-md mt-4">
+              <img src={cartimg} className="w-full" alt="" />
+              <p className="pt-4 font-semibold text-center">
+                The cart is Empty, Add some items to buy
+              </p>
+            </div>
+          )}
         </div>
-       </div>
-          
+
+        <div className="w-full md:w-1/3 border border-green mt-4 bg-white rounded-md p-4">
+          <p className="text-xl font-semibold text-center mb-4">
+            Total Amount: Rs {cartData.length===0 ? 0 :totalPrice}
+          </p>
+         
+          <button
+            onClick={handleNavigate}
+            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded-md shadow-md"
+          >
+            Buy
+          </button>
+          {deliveryMessage && <p className="mt-4">{deliveryMessage}</p>}
+        </div>
 
 
-          </div>
-        )) : 
-           <div className="bg-red-50 w-full min-h-[90vh] p-8" ><img src={cartimg} className="lg:w-full   sx:w-full" alt="" /><p className="pt-4 font-semibold">The cart is Empty , Add some items to buy</p></div> }
-
-      
- 
-
-        {/* Display total price */}
-        {/* Add checkout button or other functionality */}
       </div>
-     
-     
-      <div className="lg:w-1/4 h-48 border border-4 border-green mt-4 flex flex-col justify-center items-center bg-red-50 ">
-  <p className="text-xl font-semibold">Total Amount: Rs {TotalAmount()}</p>
-  <button onClick={handlenavigate} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md mt-4">
-  Buy
-</button>
-</div>
-
-
-
-    </div>
-
-
-
-
     </div>
   );
 };
